@@ -75,3 +75,14 @@ void AddProduit::on_btnAdd_clicked()
 
 }
 
+
+void AddProduit::on_btnReset_clicked()
+{
+    ui->lblInfo->setText("");
+    ui->txtName->setText("");
+    ui->txtCode->setText("");
+    ui->txtDescription->setText("");
+    ui->txtprix->setText("");
+    ui->txtQuntiti->setText("");
+}
+

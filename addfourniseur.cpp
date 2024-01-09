@@ -74,3 +74,14 @@ void AddFourniseur::on_btnAdd_clicked()
 
 }
 
+
+void AddFourniseur::on_btnReset_clicked()
+{
+    ui->lblInfo->setText("");
+    ui->txtFirstName->setText("");
+    ui->txtLastName->setText("");
+    ui->txtEmail->setText("");
+    ui->txtAddress->setText("");
+    ui->txtPhone->setText("");
+}
+

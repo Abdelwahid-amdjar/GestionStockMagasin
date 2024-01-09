@@ -55,7 +55,8 @@ void verifierStock::on_btnFind_clicked()
     //query.prepare("select * from Produit , Entree where Produit.id = Entree.id_produit and " + sCriteriaColum + " like '%" + sValue + "%'");
 
     QSqlQuery query(database);
-    query.exec("SELECT Produit.name AS nom_produit, "
+    query.exec("SELECT Produit.id, "
+                   "Produit.name AS nom_produit, "
                    "Produit.stockInitial, "
                    "COALESCE(SUM(Entree.Quntite), 0) AS total_entrees, "
                    "COALESCE(SUM(Sortie.Quntite), 0) AS total_sorties, "

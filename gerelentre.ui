@@ -83,7 +83,7 @@ color: rgb(255, 255, 255);</string>
   <widget class="QPushButton" name="btnAdd">
    <property name="geometry">
     <rect>
-     <x>40</x>
+     <x>60</x>
      <y>230</y>
      <width>75</width>
      <height>31</height>
@@ -152,11 +152,14 @@ color: rgb(255, 255, 255);</string>
   <widget class="QLabel" name="lblInfo">
    <property name="geometry">
     <rect>
-     <x>90</x>
+     <x>70</x>
      <y>190</y>
-     <width>241</width>
+     <width>281</width>
      <height>20</height>
     </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: rgb(255, 0, 0);</string>
    </property>
    <property name="text">
     <string/>
@@ -198,7 +201,7 @@ color: rgb(255, 255, 255);</string>
   <widget class="QPushButton" name="btnReset">
    <property name="geometry">
     <rect>
-     <x>270</x>
+     <x>290</x>
      <y>230</y>
      <width>75</width>
      <height>31</height>
@@ -211,19 +214,6 @@ color: rgb(255, 255, 255);</string>
    </property>
    <property name="text">
     <string>Reset</string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="lblInfo_2">
-   <property name="geometry">
-    <rect>
-     <x>250</x>
-     <y>190</y>
-     <width>161</width>
-     <height>16</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string/>
    </property>
   </widget>
  </widget>

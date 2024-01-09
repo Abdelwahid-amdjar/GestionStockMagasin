@@ -72,3 +72,13 @@ void GereLentre::on_btnAdd_clicked()
 
 }
 
+
+void GereLentre::on_btnReset_clicked()
+{
+    ui->lblInfo->setText("");
+    ui->txtProduit->setText("");
+    ui->txtFournisseur->setText("");
+    ui->txtQuntite->setText("");
+    ui->txtDateEntre->setText("");
+}
+

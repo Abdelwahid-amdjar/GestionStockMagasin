@@ -126,6 +126,7 @@ void GereStock::on_btnReset_clicked()
     {
         qDebug() << query.lastError().text() << query.lastQuery();
         ui->lblInfo->setText("NO");
+        ui->ValueStock->setText("Error");
         qDebug() << "Nothing!";
     }
     else
@@ -135,6 +136,13 @@ void GereStock::on_btnReset_clicked()
                 QString stockDisponible = query.value("stock_disponible").toString();
                 ui->ValueStock->setText(stockDisponible);
                 qDebug() << "Good";
+                if (stockDisponible.isEmpty())
+                {
+                    qDebug() << "stockDisponible is empty";
+                    ui->ValueStock->setText("Error");
+                    ui->lblInfo->setText("cette produit n'est pa la !!!");
+                    return;
+                }
             }
         else
             {
@@ -146,5 +154,15 @@ void GereStock::on_btnReset_clicked()
 
     database.close();
 
+}
+
+
+void GereStock::on_btnReset_2_clicked()
+{
+    ui->lblInfo->setText("");
+    ui->txtProduit->setText("");
+    ui->txtClient->setText("");
+    ui->txtQuntite->setText("");
+    ui->txtDateSortie->setText("");
 }
 
