@@ -48,6 +48,7 @@ void GereStock::on_btnAdd_clicked()
 
     QSqlQuery query(database);
     query.clear();
+
     query.prepare("insert into Sortie (id_produit,id_client,Quntite,dateSortie) values ('" +idProduit +"','" +idClient + "','"+ quntiti + "','" +dateSortie + "')");
 
     if(!query.exec())
@@ -67,6 +68,81 @@ void GereStock::on_btnAdd_clicked()
      }
 
 
+
+    database.close();
+
+}
+
+
+void GereStock::on_btnReset_clicked()
+{
+    ui->ValueStock->setText("");
+    QString idProduit = ui->idValue->text();
+
+    if (idProduit.isEmpty())
+    {
+        qDebug() << "ID is empty";
+        // Handle the case where the ID is empty (e.g., show an error message)
+        return;
+    }
+    QSqlDatabase database = QSqlDatabase::addDatabase("QSQLITE");
+    database.setDatabaseName("C:/Users/Hp/Documents/EMSI 3IIR1/Projet c++/databases/GestionStock.db");
+
+    if(QFile::exists("C:/Users/Hp/Documents/EMSI 3IIR1/Projet c++/databases/GestionStock.db"))
+    {
+        qDebug() <<"databses file exist";
+    }
+    else
+    {
+        qDebug() <<"DB file doesn't exists";
+        return;
+    }
+
+    if(!database.open())
+    {
+        qDebug() <<"Error: Unable to open Database" ;
+        return;
+    }
+    else
+    {
+        qDebug() <<" Database open successfully..";
+    }
+
+    QSqlQuery query(database);
+    query.clear();
+
+    query.prepare("SELECT Produit.id,"
+                  "Produit.stockInitial ,"
+                  "COALESCE(SUM(Entree.Quntite), 0) AS total_entrees, "
+                  "COALESCE(SUM(Sortie.Quntite), 0) AS total_sorties, "
+                  "Produit.stockInitial + COALESCE(SUM(Entree.Quntite), 0) - COALESCE(SUM(Sortie.Quntite), 0) AS stock_disponible "
+                  "FROM Produit "
+                  "LEFT JOIN Entree ON produit.id = Entree.id_produit "
+                  "LEFT JOIN Sortie ON produit.id = Sortie.id_produit "
+                  "WHERE Produit.id = :idProduit");
+    query.bindValue(":idProduit", idProduit);
+
+    if (!query.exec())
+    {
+        qDebug() << query.lastError().text() << query.lastQuery();
+        ui->lblInfo->setText("NO");
+        qDebug() << "Nothing!";
+    }
+    else
+    {
+        if (query.next())
+            {
+                QString stockDisponible = query.value("stock_disponible").toString();
+                ui->ValueStock->setText(stockDisponible);
+                qDebug() << "Good";
+            }
+        else
+            {
+                qDebug() << "No data found for the given ID";
+                // Handle the case where no data is found for the given ID (e.g., show an error message)
+                ui->ValueStock->setText("N/A");
+            }
+    }
 
     database.close();
 

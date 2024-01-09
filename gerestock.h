@@ -19,6 +19,8 @@ public:
 private slots:
     void on_btnAdd_clicked();
 
+    void on_btnReset_clicked();
+
 private:
     Ui::GereStock *ui;
 };
