@@ -128,7 +128,7 @@ border-image: url(:/images/img3.gif);</string>
      <rect>
       <x>130</x>
       <y>20</y>
-      <width>181</width>
+      <width>261</width>
       <height>51</height>
      </rect>
     </property>
@@ -165,6 +165,22 @@ border-image: url(:/images/img3.gif);</string>
      </property>
      <property name="text">
       <string>Fournisseur</string>
+     </property>
+    </widget>
+    <widget class="QRadioButton" name="rdoClient">
+     <property name="geometry">
+      <rect>
+       <x>170</x>
+       <y>20</y>
+       <width>91</width>
+       <height>17</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: rgb(231, 231, 255);</string>
+     </property>
+     <property name="text">
+      <string>Client</string>
      </property>
     </widget>
    </widget>

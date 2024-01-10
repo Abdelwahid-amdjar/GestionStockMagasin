@@ -63,6 +63,8 @@ void MainWindow::on_pushButton_6_clicked()
         sCriteriaColum="Produit";
     else if (ui->rdoFournisseur->isChecked())
         sCriteriaColum="Fournisseur";
+    else if (ui->rdoClient->isChecked())
+        sCriteriaColum="Client";
     else
         sCriteriaColum = "Produit";
 

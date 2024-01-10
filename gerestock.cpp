@@ -82,6 +82,7 @@ void GereStock::on_btnReset_clicked()
     if (idProduit.isEmpty())
     {
         qDebug() << "ID is empty";
+        ui->lblInfo->setText("ID is empty");
         // Handle the case where the ID is empty (e.g., show an error message)
         return;
     }
@@ -135,6 +136,7 @@ void GereStock::on_btnReset_clicked()
             {
                 QString stockDisponible = query.value("stock_disponible").toString();
                 ui->ValueStock->setText(stockDisponible);
+                ui->lblInfo->setText("Good !!!");
                 qDebug() << "Good";
                 if (stockDisponible.isEmpty())
                 {
@@ -164,5 +166,8 @@ void GereStock::on_btnReset_2_clicked()
     ui->txtClient->setText("");
     ui->txtQuntite->setText("");
     ui->txtDateSortie->setText("");
+    ui->ValueStock->setText("");
+    ui->lblInfo->setText("");
+    ui->idValue->setText("");
 }
 
